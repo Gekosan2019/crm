@@ -6,3 +6,5 @@ CRM для гостиницы.
 ```
 mvn spring-boot:run "-Dspring-boot.run.arguments=--DB_HOST=<host> --DB_PORT=<port> --DB_NAME=<db-name> --DB_PASSWORD=<password> --DB_USERNAME=<username> --LOG_LEVEL=<log_level>"
 ```
+Структура БД:
+![img.png](img.png)

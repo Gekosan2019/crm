@@ -8,6 +8,5 @@ public class CrmApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CrmApplication.class, args);
-        System.out.println("Hello world");
     }
 }
