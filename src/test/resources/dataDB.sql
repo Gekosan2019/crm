@@ -6,7 +6,7 @@ INSERT INTO empl_positions(name_position) VALUES
                                               ('Cook'),
                                               ('Head');
 
-INSERT INTO employees(name, surname, position_id) VALUES
+INSERT INTO employee(name, surname, position_id) VALUES
                                                       ('Shamil', 'Shundalov', 6),
                                                       ('Sofia', 'Lipskyta', 3),
                                                       ('Maxim', 'Lavrov', 5),

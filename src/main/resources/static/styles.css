@@ -1,0 +1,28 @@
+/* guest.html */
+.guestBody {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.guestH1{
+    margin-top: 20px;
+}
+
+#guestTable {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#guestTable th, #guestTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#guestTable th {
+    background-color: #f2f2f2;
+}
+
+#guestTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

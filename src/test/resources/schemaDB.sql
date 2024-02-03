@@ -3,7 +3,7 @@ CREATE TABLE empl_positions(
                                name_position VARCHAR(40) NOT NULL
 );
 
-CREATE TABLE employees(
+CREATE TABLE employee(
                           empl_id INT AUTO_INCREMENT PRIMARY KEY,
                           name VARCHAR(20) NOT NULL,
                           surname VARCHAR(40) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE guest_registration(
                                    room_id INT NOT NULL,
                                    is_currently_living boolean NOT NULL,
                                    CONSTRAINT FK_employees
-                                       FOREIGN KEY (empl_id) REFERENCES employees(empl_id),
+                                       FOREIGN KEY (empl_id) REFERENCES employee(empl_id),
                                    CONSTRAINT FK_guest
                                        FOREIGN KEY (guest_id) REFERENCES guests(guest_id) ON DELETE CASCADE,
                                    CONSTRAINT FK_rooms

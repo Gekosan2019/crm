@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table
-public class Rooms {
+@Table(name = "rooms")
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;

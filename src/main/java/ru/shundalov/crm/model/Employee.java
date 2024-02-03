@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table
+@Table(name = "employees")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employees {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long emplId;
@@ -26,5 +26,5 @@ public class Employees {
 
     @ManyToOne
     @JoinColumn(name = "position_id", nullable = false)
-    private EmplPositions emplPositions;
+    private EmplPosition emplPosition;
 }

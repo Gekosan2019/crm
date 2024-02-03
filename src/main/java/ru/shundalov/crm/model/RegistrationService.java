@@ -25,5 +25,5 @@ public class RegistrationService {
     @ManyToOne
     @MapsId("servId")
     @JoinColumn(name = "serv_id", nullable = false)
-    private Services services;
+    private Service service;
 }

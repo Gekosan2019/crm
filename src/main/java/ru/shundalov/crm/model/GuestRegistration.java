@@ -21,14 +21,14 @@ public class GuestRegistration {
 
     @ManyToOne
     @JoinColumn(name = "empl_id", nullable = false)
-    private Employees employees;
+    private Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "guest_id", nullable = false)
-    private Guests guests;
+    private Guest guest;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
-    private Rooms rooms;
+    private Room room;
 
 }

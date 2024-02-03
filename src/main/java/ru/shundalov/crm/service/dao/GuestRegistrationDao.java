@@ -1,4 +1,4 @@
-package ru.shundalov.crm.dao;
+package ru.shundalov.crm.service.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

@@ -6,8 +6,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.shundalov.crm.model.EmplPositions;
-import ru.shundalov.crm.model.Employees;
+import ru.shundalov.crm.model.EmplPosition;
+import ru.shundalov.crm.model.Employee;
+import ru.shundalov.crm.service.GuestService;
+import ru.shundalov.crm.service.dao.EmplPositionsDao;
+import ru.shundalov.crm.service.dao.EmployeeDao;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
@@ -15,62 +18,65 @@ import static org.springframework.test.util.AssertionErrors.assertNotNull;
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class EmployeesDaoTest {
+public class EmployeeDaoTest {
 
     @Autowired
-    EmployeesDao employeesDao;
+    EmployeeDao employeeDao;
     @Autowired
     EmplPositionsDao emplPositionsDao;
 
+    @Autowired
+    GuestService guestService;
+
     @Test
     public void checkSaved() {
-        EmplPositions emplPositions = EmplPositions.builder()
+        EmplPosition emplPosition = EmplPosition.builder()
                 .namePosition("HEADER")
                 .build();
-        Employees employees = Employees.builder()
+        Employee employee = ru.shundalov.crm.model.Employee.builder()
                 .name("Sofia")
                 .surname("Lipskaya")
-                .emplPositions(emplPositions)
+                .emplPosition(emplPosition)
                 .build();
 
         log.info("1.Save emplPositions because employees have FK on emplPositions");
-        emplPositionsDao.save(emplPositions);
+        emplPositionsDao.save(emplPosition);
         log.info("2.Save employee");
-        employeesDao.save(employees);
+        employeeDao.save(employee);
         log.info("3.Get saved employees");
-        Employees savedEmployee = employeesDao.findById(employees.getEmplId()).orElse(null);
+        Employee savedEmployee = employeeDao.findById(employee.getEmplId()).orElse(null);
 
         log.info("4.CHECK");
         assertNotNull("Check get employee is not null", savedEmployee);
         assertEquals("Check name", "Sofia", savedEmployee.getName());
         assertEquals("Check surname", "Lipskaya", savedEmployee.getSurname());
-        assertEquals("Check emplPosititions", emplPositions, savedEmployee.getEmplPositions());
+        assertEquals("Check emplPosititions", emplPosition, savedEmployee.getEmplPosition());
     }
 
     @Test
     public void checkUpdate() {
-        EmplPositions emplPositions = EmplPositions.builder()
+        EmplPosition emplPosition = EmplPosition.builder()
                 .namePosition("HEADER")
                 .build();
-        Employees employees = Employees.builder()
+        Employee employee = Employee.builder()
                 .name("Sofia")
                 .surname("Lipskaya")
-                .emplPositions(emplPositions)
+                .emplPosition(emplPosition)
                 .build();
 
         log.info("1.Save emplPositions because employees have FK on emplPositions");
-        emplPositionsDao.save(emplPositions);
+        emplPositionsDao.save(emplPosition);
         log.info("2.Save employee");
-        employeesDao.save(employees);
+        employeeDao.save(employee);
         log.info("3.Update employee");
-        employees.setSurname("Shundalova");
-        employeesDao.save(employees);
+        employee.setSurname("Shundalova");
+        employeeDao.save(employee);
         log.info("4. Check");
-        Employees changedEmpl = employeesDao.findById(employees.getEmplId()).orElse(null);
+        Employee changedEmpl = employeeDao.findById(employee.getEmplId()).orElse(null);
         assertNotNull("Check get employee is not null", changedEmpl);
         assertEquals("Check name", "Sofia", changedEmpl.getName());
         assertEquals("Check surname", "Shundalova", changedEmpl.getSurname());
-        assertEquals("Check emplPosititions", emplPositions, changedEmpl.getEmplPositions());
+        assertEquals("Check emplPosititions", emplPosition, changedEmpl.getEmplPosition());
     }
 
     @Test

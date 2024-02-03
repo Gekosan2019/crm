@@ -6,10 +6,10 @@ import lombok.*;
 @Entity
 @Data
 @Builder
-@Table
+@Table(name = "guests")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Guests {
+public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

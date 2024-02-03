@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table
+@Table(name = "empl_postitions")
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmplPositions {
+public class EmplPosition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
